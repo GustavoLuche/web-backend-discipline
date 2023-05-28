@@ -33,3 +33,27 @@ header h1 {
     margin-bottom: 15px;
 }
 
+main {
+    padding: 20px;
+}
+
+main h2 {
+    margin-bottom: 5px;
+}
+
+main li {
+    margin-left: 35px;
+    padding: 3px;
+}
+
+.alpha {
+    list-style-type: lower-alpha;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+  }
