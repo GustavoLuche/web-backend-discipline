@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* border: 2px solid red; */
+    padding: 10px;
+    /* text-align: center; */
+}
+
+header {
+    /* border: 2px solid red; */
+    text-align: center;
+    padding: 15px;
+}
+
+header ul {
+    /* border: 2px solid red; */
+}
+
+header li {
+    /* border: 2px solid red; */
+    list-style-type: none;
+    padding: 10px;
+    text-transform: uppercase;
+    display: inline;
+}
+
+header h1 {
+    /* border: 2px solid red; */
+    margin-bottom: 15px;
+}
+
