@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img class="logo" src="https://moodle.utfpr.edu.br/pluginfile.php/1/core_admin/logocompact/300x300/1676048922/UTFPR%20-%20Identidade%20Visual%20-2.png" alt="Logo UTFPR">
+            <h1>LOGIN</h1>
+        </header>
+        <main>
+            <form action="https://httpbin.org/get" method="get">
+                <p>
+                    <input type="email" name="email" id="email" placeholder="E-mail" required>
+                </p>
+                <p>
+                    <input type="password" name="password" id="password" placeholder="Senha" required>
+                </p>
+                <p>
+                    <input type="checkbox" name="lembrar" id="lembrar" value="Lembre-me">
+                    <label for="lembrar">Lembre-me</label>
+                </p>
+                <p>
+                    <button type="submit">Entrar</button>
+                </p>
+            </form>
+        </main>
+        <footer>
+            <p>@ 2021-2023</p>
+        </footer>
+    </div>
+</body>
+
+</html>
