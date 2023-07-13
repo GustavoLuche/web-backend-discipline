@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades de Javascript</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Atividades de Javascript - Nível 1</h1>
+    </header>
+    <main>
+        <article>
+            <fieldset>
+                <legend>Calcule o Fatorial de um Número</legend>
+                <label for="nFatorial">Insira um número.: <input type="number" name="nFatorial" id="nFatorial"></label>
+                <input type="button" value="Verificar" onclick="resultFatorial()">
+                <span id="respFatorial"></span>
+            </fieldset>
+            <fieldset>
+                <legend>Gerar Mensagens</legend>
+                <label for="msg">Insira a mensagem.: <input type="text" name="msg" id="msg"></label>
+                <label for="qtd">Insira a quantidade.: <input type="number" name="qtd" id="qtd"></label>
+                <input type="button" value="Gerar" onclick="resultMensagem()">
+            </fieldset>
+            <fieldset>
+                <legend>Calcule a Operação</legend>
+                <label for="valor1">Insira o primeiro valor.: <input type="number" name="valor1" id="valor1"></label>
+                <label for="valor2">Insira o segundo valor.: <input type="number" name="valor2" id="valor2"></label>
+                <select name="oprecao" id="operacao">
+                    <option value="">Operação</option>
+                    <option value="+">Soma</option>
+                    <option value="-">Subtração</option>
+                    <option value="*">Multiplicação</option>
+                    <option value="/">Divisão</option>
+                </select>
+                <input type="button" value="Verificar" onclick="resultOperacao()">
+                <span id="respOperacao"></span>
+            </fieldset>
+            <fieldset>
+                <legend>Calcule a Tabuada</legend>
+                <label for="nTabuada">Insira um número.: <input type="number" name="nTabuada" id="nTabuada"></label>
+                <input type="submit" value="Verificar" onclick="resultTabuada()">
+            </fieldset>
+            <fieldset>
+                <legend>Inverte Número</legend>
+                <label for="nInverte">Insira um número.: <input type="number" name="nInverte" id="nInverte"></label>
+                <input type="button" value="Verificar" onclick="resultInverteNumero()">
+                <span id="respInverte"></span>
+            </fieldset>
+            <fieldset>
+                <legend>Conta-se Vogais</legend>
+                <label for="txt">Insira uma palavra ou texto.: <input type="text" name="txt" id="txt"></label>
+                <input type="button" value="Verificar" onclick="resultVogais()">
+                <span id="respVogais"></span>
+            </fieldset>
+            <fieldset>
+                <legend>Verifica Sequência de Parênteses "()" e Colchetes "[]"</legend>
+                <label for="seq">Insira uma sequência.: <input type="text" name="seq" id="seq"></label>
+                <input type="button" value="Verifica" onclick="resultSequencia()">
+                <span id="respSeq"></span>
+            </fieldset>
+            <fieldset>
+                <legend>Gerar Lista de Objetos</legend>
+                <label for="list">Insira um número.: <input type="number" name="list" id="list"></label>
+                <input type="button" value="Gerar" onclick="resutlListObjetos()">
+                <br>
+                <label for="order">Selecione o atributo.:
+                    <select name="order" id="order">
+                        <option value="">selecione</option>
+                        <option value="id">id</option>
+                        <option value="nome">nome</option>
+                        <option value="idade">idade</option>
+                    </select>
+                </label>
+                <input type="button" value="Ordenar" onclick="resultOrderList()">
+            </fieldset>
+        </article>
+    </main>
+
+    <script>
+        var listaObjetos = []
+
+        function resultFatorial() {
+            var resp = document.querySelector('span#respFatorial')
+            var nFatorial = calcularFatorial(Number(document.querySelector('input#nFatorial').value))
+            resp.innerHTML = `<strong>Resposta.:</strong> ${nFatorial}`
+        }
+
+        function resultMensagem() {
+            var qtd = Number(document.querySelector('input#qtd').value)
+            var msg = gerarSequenciaMensagens(document.querySelector('input#msg').value, qtd)
+            window.alert(msg)
+        }
+
+        function resultOperacao() {
+            var resp = document.querySelector('span#respOperacao')
+            var valor1 = Number(document.querySelector('input#valor1').value)
+            var valor2 = Number(document.querySelector('input#valor2').value)
+            var operacao = document.querySelector('select#operacao').value
+            var resultado = calcularOperacao(valor1, valor2, operacao)
+            resp.innerHTML = `<strong>Resposta.:</strong> ${resultado}`
+        }
+
+        function resultTabuada() {
+            var nTabuada = Number(document.querySelector('input#nTabuada').value)
+            var vetorTabuada = calcularTabuada(nTabuada)
+            var resposta = ""
+            for (let i = 0; i < vetorTabuada.length; i++) {
+                resposta += `${i + 1} x ${nTabuada} = ${vetorTabuada[i]}` + '\n'
+            }
+            alert(resposta)
+        }
+
+        function resultInverteNumero() {
+            var resp = document.querySelector('span#respInverte')
+            var nInverte = Number(document.querySelector('input#nInverte').value)
+            var resultado = inverterNumero(nInverte)
+            resp.innerHTML = `<strong>Resposta.:</strong> ${resultado}`
+        }
+
+        function resultVogais() {
+            var resp = document.querySelector('span#respVogais')
+            var txt = document.querySelector('input#txt').value
+            var contador = contarVogais(txt)
+            resp.innerHTML = `<strong>Resposta.:</strong> ${contador}`
+        }
+
+        function resultSequencia() {
+            var resp = document.querySelector('span#respSeq')
+            var seq = document.querySelector('input#seq').value
+            var resultado = verificarSequencia(seq)
+            resp.innerHTML = `<strong>Resposta.:</strong> ${resultado}`
+        }
+
+        function resutlListObjetos() {
+            var num = Number(document.querySelector("input#list").value)
+            var resultado = listaObjetos = gerarListaObjetosAleatorios(num)
+            window.alert(typeof listaObjetos)
+            var resposta = ""
+            for (let i = 0; i < resultado.length; i++) {
+                const objeto = resultado[i]
+                resposta += `-> id.: ${objeto.id} - nome.: ${objeto.nome} - idade.: ${objeto.idade}` + "\n"
+            }
+            window.alert(resposta)
+        }
+        function resultOrderList() {
+            var order = document.querySelector("select#order").value
+            var resultado = ordenarListaPorAtributo(listaObjetos, order)
+            var resposta = ""
+            for (let i = 0; i < listaObjetos.length; i++) {
+                const objeto = listaObjetos[i]
+                resposta += `-> id.: ${objeto.id} - nome.: ${objeto.nome} - idade.: ${objeto.idade}` + "\n"
+            }
+            window.alert(resposta)
+        }
+    </script>
+</body>
+
+</html>
